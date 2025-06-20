@@ -1,21 +1,32 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Filmes cadastrados</title>
-    <link rel="stylesheet" href="{% static 'filmes/style.css' %}">
+    <link rel="stylesheet" href="{% static 'filmes/style.css' %}" />
 </head>
 <body>
-    <h1>Lista de filmes</h1>
-    <div class="lista-filmes">
+    <h1 class="titulo-principal">Lista de filmes</h1>
+    <a href="{% url 'criar_filme' %}" class="btn-novo-filme">Novo Filme</a>
+
+    {% if filmes %}
+    <ul class="lista-filmes">
         {% for filme in filmes %}
-        <div class="filme">
-            <img src="{{filme.capa}}">
-            <p>{{filme.titulo}} ({{filme.ano}})</p>s
-        </div>
+        <li class="filme">
+            <img src="{{ filme.capa }}" alt="Capa do filme {{ filme.titulo }}" />
+            <h2>{{ filme.titulo }} ({{ filme.ano }})</h2>
+            <p class="genero">Gênero: {{ filme.genero }}</p>
+            <div class="acoes">
+                <a href="{% url 'atualizar_filme' filme.pk %}">Editar</a>
+                <a href="{% url 'deletar_filme' filme.pk %}">Excluir</a>
+            </div>
+        </li>
         {% endfor %}
-    </div>
+    </ul>
+    {% else %}
+    <p class="nenhum-filme">Nenhum filme cadastrado.</p>
+    {% endif %}
 </body>
 </html>

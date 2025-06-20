@@ -1,19 +1,111 @@
-body{
-    background-color: black;
-    color: white;
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-img {
-    width: 300px;
-}
-
-.lista-filmes{
+body {
+    background-color: #121212;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    gap: 20px;
 }
 
-.filme{
-    border: 1px solid #fff;
+h1 {
+    font-size: 2rem;
     text-align: center;
-    margin: 5px 5px;
+    color: #fff;
+}
 
+.lista-filmes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.filme {
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 280px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.filme:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+}
+
+.filme img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-bottom: 4px solid #fff;
+}
+
+.filme h2 {
+    padding: 10px;
+    font-size: 1.2rem;
+    background-color: #333;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+
+/* Botão Novo Filme */
+.btn-novo-filme {
+    display: inline-block;
+    background-color: #2ecc71; /* verde */
+    color: white;
+    padding: 10px 20px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.btn-novo-filme:hover,
+.btn-novo-filme:focus {
+    background-color: #27ae60;
+    box-shadow: 0 4px 8px rgba(39, 174, 96, 0.5);
+    outline: none;
+}
+
+/* Container dos links "Editar" e "Excluir" */
+.acoes a {
+    color: #3498db; /* azul */
+    font-weight: 600;
+    text-decoration: none;
+    margin: 0 6px;
+    transition: color 0.3s ease;
+}
+
+.acoes a:hover,
+.acoes a:focus {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+/* Separador visual (pipe) */
+.acoes a + a::before {
+    content: "|";
+    color: #ccc;
+    margin-left: 6px;
+    margin-right: 6px;
 }
